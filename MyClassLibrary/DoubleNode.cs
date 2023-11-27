@@ -8,9 +8,9 @@ namespace MyClassLibrary
 {
     public class DoubleNode
     {
-        public object Value { get; set; }
-        public DoubleNode Next { get; set; }
-        public DoubleNode Previous { get; set; }
+        public object Value { get; }
+        public DoubleNode? Next { get; set; }
+        public DoubleNode? Previous { get; set; }
 
         public DoubleNode(object value)
         {

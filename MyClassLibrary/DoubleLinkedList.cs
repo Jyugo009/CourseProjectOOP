@@ -8,16 +8,16 @@ namespace MyClassLibrary
 {
     public class DoubleLinkedList
     {
-        private DoubleNode _head;
-        private DoubleNode _tail;
+        private DoubleNode? _head;
+        private DoubleNode? _tail;
 
         public int Count { get; private set; }
 
-        public object First => _head?.Value;
+        public object? First => _head?.Value;
 
-        public object Last => _tail?.Value;
+        public object? Last => _tail?.Value;
 
-        public void Add(object item)
+        public void Add(object? item)
         {
             var newNode = new DoubleNode(item);
 

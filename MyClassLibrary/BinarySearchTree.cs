@@ -72,34 +72,28 @@ namespace MyClassLibrary
 
         public int[] ToArray()
         {
-            MyList tempList = new MyList(Count);
+            if (_root == null)
+                return new int[0]; // or throw exception if tree must not be empty
 
-            TraverseAndAdd(_root, tempList);
+            int[] resultArray = new int[Count];
+            int index = 0;
 
-            object[] tempArr = tempList.ToArray();
-
-            int[] resultArray = new int[tempArr.Length];
-
-            for (int i = 0; i < tempArr.Length; i++)
-            {
-                resultArray[i] = (int)tempArr[i];
-            }
+            InOrderTraverseAndFillArray(_root, ref index, resultArray);
 
             return resultArray;
-
-            void TraverseAndAdd(TreeNode node, MyList list)
-            {
-                if (node == null)
-                {
-                    return;
-                }
-
-                TraverseAndAdd(node.Left, list);
-
-                list.Add(node.Value);
-
-                TraverseAndAdd(node.Right, list);
-            }
         }
+
+        private void InOrderTraverseAndFillArray(TreeNode node, ref int currentIndex, int[] arr)
+        {
+            if (node == null)
+                return;
+
+            InOrderTraverseAndFillArray(node.Left, ref currentIndex, arr);
+
+            arr[currentIndex++] = node.Value;
+
+            InOrderTraverseAndFillArray(node.Right, ref currentIndex, arr);
+        }
+
     }
 }

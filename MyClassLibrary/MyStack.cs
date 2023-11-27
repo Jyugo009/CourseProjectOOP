@@ -8,77 +8,47 @@ namespace MyClassLibrary
 {
     public class MyStack
     {
-        private StackNode _top;
-
-        public int Count { get; private set; }
+        private DoubleLinkedList _list = new DoubleLinkedList();
+        public int Count => _list.Count;
 
         public void Push(object item)
         {
-            var newNode = new StackNode(item);
-
-            newNode.Next = _top;
-
-            _top = newNode;
-
-            Count++;
+            _list.AddFirst(item);
         }
 
         public object Pop()
         {
-            if (_top == null) throw new InvalidOperationException("Cannot pop from an empty stack.");
+            if (Count == 0) throw new InvalidOperationException("Cannot pop from an empty stack.");
 
-            object value = _top.Value;
+            var value = _list.First;
 
-            _top = _top.Next;
-
-            Count--;
+            _list.RemoveFirst();
 
             return value;
         }
 
         public object Peek()
         {
-            if (_top == null) throw new InvalidOperationException("Cannot peek on an empty stack.");
+            if (Count == 0) throw new InvalidOperationException("Cannot peek on an empty stack.");
 
-            return _top.Value;
+            return _list.First;
         }
 
         public void Clear()
         {
-            _top = null;
-
-            Count = 0;
+            _list.Clear();
         }
         public bool Contains(object item)
         {
-            StackNode current = _top;
-
-            while (current != null)
-            {
-                if (current.Value.Equals(item))
-                {
-                    return true;
-                }
-
-                current = current.Next;
-            }
-            return false;
+            return _list.Contains(item);
         }
 
         public object[] ToArray()
         {
-            object[] resultArray = new object[Count];
-            int index = 0;
-
-            StackNode currentNode = _top;
-
-            while (currentNode != null)
-            {
-                resultArray[index++] = currentNode.Value;
-                currentNode = currentNode.Next;
-            }
-
-            return resultArray;
+            return _list.ToArray();
         }
     }
+
 }
+    
+

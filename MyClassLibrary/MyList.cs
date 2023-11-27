@@ -9,9 +9,10 @@ namespace MyClassLibrary
     public class MyList
     {
         private object[] _items;
-        private int _size;
 
+        private int _size;
         public int Count => _size;
+        public int Capacity => _items.Length;
 
         public MyList()
         {
@@ -63,7 +64,7 @@ namespace MyClassLibrary
 
         public void Remove(object item)
         {
-            int indexToRemove = -1;
+            int indexToRemove = IndexOf(item);
 
             for (int i = 0; i < _size; i++)
             {
@@ -100,11 +101,22 @@ namespace MyClassLibrary
         {
             for (int i = 0; i < _size; i++)
             {
+                if (_items[i] == null && item == null)
+                {
+                    return i;
+                }
+
+                if (_items[i] == null || item == null)
+                {
+                    continue;
+                }
+
                 if (_items[i].Equals(item))
                 {
                     return i;
                 }
             }
+
             return -1;
         }
 

@@ -8,98 +8,44 @@ namespace MyClassLibrary
 {
     public class MyQueue
     {
-        private QueueNode _head;
+        private DoubleLinkedList _list = new DoubleLinkedList();
 
-        private QueueNode _tail;
-
-        public int Count { get; private set; }
+        public int Count => _list.Count;
 
         public void Enqueue(object item)
         {
-            var newNode = new QueueNode(item);
-
-            if (_tail != null)
-            {
-                _tail.Next = newNode;
-            }
-
-            _tail = newNode;
-
-            if (_head == null)
-            {
-                _head = newNode;
-            }
-
-            Count++;
+            _list.Add(item);
         }
 
         public object Dequeue()
         {
-            if (_head == null) throw new InvalidOperationException("Cannot dequeue from an empty queue.");
+            if (Count == 0) throw new InvalidOperationException("Cannot dequeue from an empty queue.");
 
-            object value = _head.Value;
-
-            _head = _head.Next;
-
-            if (_head == null)
-            {
-                _tail = null;
-            }
-
-            Count--;
-
+            var value = _list.First;
+            _list.RemoveFirst();
             return value;
         }
 
         public object Peek()
         {
-            if (_head == null) throw new InvalidOperationException("Cannot peek from an empty queue.");
+            if (Count == 0) throw new InvalidOperationException("Cannot peek from an empty queue.");
 
-            return _head.Value;
+            return _list.First;
         }
 
         public void Clear()
         {
-            _head = null;
-
-            _tail = null;
-
-            Count = 0;
+            _list.Clear();
         }
 
         public bool Contains(object item)
         {
-            QueueNode current = _head;
-
-            while (current != null)
-            {
-                if (current.Value.Equals(item))
-                {
-                    return true;
-                }
-
-                current = current.Next;
-            }
-
-            return false;
+            return _list.Contains(item);
         }
 
         public object[] ToArray()
         {
-            object[] resultArray = new object[Count];
-
-            int index = 0;
-
-            QueueNode currentNode = _head;
-
-            while (currentNode != null)
-            {
-                resultArray[index++] = currentNode.Value;
-
-                currentNode = currentNode.Next;
-            }
-
-            return resultArray;
+            return _list.ToArray();
         }
 
     }
