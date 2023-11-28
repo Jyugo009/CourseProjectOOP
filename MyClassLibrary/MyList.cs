@@ -3,16 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Interfaces;
 
 namespace MyClassLibrary
 {
-    public class MyList
+    public class MyList : IList
     {
         private object[] _items;
 
         private int _size;
         public int Count => _size;
         public int Capacity => _items.Length;
+
+        public object this[int index]
+        {
+            get
+            {
+                if (index < 0 || index >= _size)
+                    throw new ArgumentOutOfRangeException();
+                return _items[index];
+            }
+
+            set
+            {
+                if (index < 0 || index >= _size)
+                    throw new ArgumentOutOfRangeException();
+                _items[index] = value;
+            }
+        }
 
         public MyList()
         {

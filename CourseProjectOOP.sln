@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseProjectOOP", "CourseProjectOOP\CourseProjectOOP.csproj", "{868F4C37-AFED-4D51-BD38-3D2164DD6447}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourseProjectOOP", "CourseProjectOOP\CourseProjectOOP.csproj", "{868F4C37-AFED-4D51-BD38-3D2164DD6447}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyClassLibrary", "MyClassLibrary\MyClassLibrary.csproj", "{7BE248EA-37E1-4A9D-83DF-FC80EDE7FBD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyClassLibrary", "MyClassLibrary\MyClassLibrary.csproj", "{7BE248EA-37E1-4A9D-83DF-FC80EDE7FBD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{EE98A0C7-EB15-4E20-B00F-04408B3F188F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{7BE248EA-37E1-4A9D-83DF-FC80EDE7FBD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BE248EA-37E1-4A9D-83DF-FC80EDE7FBD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BE248EA-37E1-4A9D-83DF-FC80EDE7FBD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE98A0C7-EB15-4E20-B00F-04408B3F188F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE98A0C7-EB15-4E20-B00F-04408B3F188F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE98A0C7-EB15-4E20-B00F-04408B3F188F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE98A0C7-EB15-4E20-B00F-04408B3F188F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
