@@ -1,14 +1,12 @@
-﻿namespace Interfaces
+﻿namespace MyClassLibrary.Interfaces
 {
-    public interface ICollections
+    public interface ICollection
     {
         int Count { get; }
 
         void Clear();
 
         bool Contains(object? item);
-
-        void Add(object? item);
 
         object[]? ToArray();
 

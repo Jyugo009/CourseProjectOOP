@@ -1,4 +1,4 @@
-﻿using Interfaces;
+﻿using MyClassLibrary.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Interfaces
+namespace MyClassLibrary.Interfaces
 {
-    public interface IBinarySearchTree : ICollections
+    public interface IBinarySearchTree : ICollection
     {
- 
+        void Add(object? item);
     }
 }

@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Interfaces
+namespace MyClassLibrary.Interfaces
 {
-    public interface IList : ICollections
+    public interface IList : ICollection
     {
         object? this[int index] { get; }
 
         public int Capacity { get; }
+
+        void Add(object? item);
 
         void Insert(int index, object? item);
 

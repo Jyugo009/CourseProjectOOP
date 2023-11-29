@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Interfaces
+namespace MyClassLibrary.Interfaces
 {
-    public interface ISingleLinkedList : ICollections
+    public interface ISingleLinkedList : ICollection
     {
         public object? First { get; }
 
         public object? Last { get; }
+
+        void Add(object? item);
 
         void AddFirst(object? item);
 

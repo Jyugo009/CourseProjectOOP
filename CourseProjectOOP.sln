@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourseProjectOOP", "CourseP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyClassLibrary", "MyClassLibrary\MyClassLibrary.csproj", "{7BE248EA-37E1-4A9D-83DF-FC80EDE7FBD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{EE98A0C7-EB15-4E20-B00F-04408B3F188F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyClassLibrary.Interfaces", "Interfaces\MyClassLibrary.Interfaces.csproj", "{EE98A0C7-EB15-4E20-B00F-04408B3F188F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -4,15 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Interfaces
+namespace MyClassLibrary.Interfaces
 {
-    public interface IQueue : ICollections
+    public interface IQueue : ICollection
     {
-        public void Dequeue(object? item)
-        {
-            Add(item);
-        }
+        public void Enqueue(object? item);
 
+        public object? Dequeue();
+        
         public object? Peek();
 
 

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Interfaces
+namespace MyClassLibrary.Interfaces
 {
-    public interface IStack : ICollections
+    public interface IStack : ICollection
     {
         public void Push(object? item);
 

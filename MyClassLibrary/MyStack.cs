@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Interfaces;
+using MyClassLibrary.Interfaces;
 
 namespace MyClassLibrary
 {
@@ -47,11 +47,6 @@ namespace MyClassLibrary
         public object[] ToArray()
         {
             return _list.ToArray();
-        }
-
-        public void Add(object item)
-        {
-            Push(item);
         }
     }
 
