@@ -3,19 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyClassLibrary.Interfaces;
 
 namespace MyClassLibrary
 {
-    public class BinarySearchTree
+    public class BinarySearchTree : IBinarySearchTree
     {
         private TreeNode _root;
         public TreeNode Root => _root;
 
         public int Count { get; private set; }
 
-        public void Add(int value)
+        public void Add(object? value)
         {
-            _root = Insert(_root, value);
+            if (value is int intValue)
+            {
+                _root = Insert(_root, intValue);
+            }
 
             TreeNode Insert(TreeNode node, int newValue)
             {
@@ -40,13 +44,23 @@ namespace MyClassLibrary
             Count++;
         }
 
-        public bool Contains(int value)
+        public bool Contains(object? value)
         {
-            return Find(_root, value) != null;
-
-            TreeNode Find(TreeNode node, int targetValue)
+            if (value is int intValue)
             {
-                if (node == null || node.Value == targetValue)
+                return Find(_root, intValue) != null;
+            }
+
+            return false;
+
+            TreeNode Find(TreeNode? node, int targetValue)
+            {
+                if (node == null)
+                {
+                    return null;
+                }
+
+                if (node.Value == targetValue)
                 {
                     return node;
                 }
@@ -56,10 +70,7 @@ namespace MyClassLibrary
                     return Find(node.Left, targetValue);
                 }
 
-                else
-                {
-                    return Find(node.Right, targetValue);
-                }
+                return Find(node.Right, targetValue);
             }
         }
 
@@ -70,12 +81,13 @@ namespace MyClassLibrary
             Count = 0;
         }
 
-        public int[] ToArray()
+        public object[] ToArray()
         {
             if (_root == null)
-                return new int[0]; // or throw exception if tree must not be empty
+                return Array.Empty<object>();
 
-            int[] resultArray = new int[Count];
+            object[] resultArray = new object[Count];
+
             int index = 0;
 
             InOrderTraverseAndFillArray(_root, ref index, resultArray);
@@ -83,10 +95,12 @@ namespace MyClassLibrary
             return resultArray;
         }
 
-        private void InOrderTraverseAndFillArray(TreeNode node, ref int currentIndex, int[] arr)
+        private void InOrderTraverseAndFillArray(TreeNode node, ref int currentIndex, object[] arr)
         {
             if (node == null)
+            {
                 return;
+            }
 
             InOrderTraverseAndFillArray(node.Left, ref currentIndex, arr);
 

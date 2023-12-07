@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyClassLibrary.Interfaces;
 
 namespace MyClassLibrary
 {
-    public class MyQueue
+    public class MyQueue : IQueue
     {
         private DoubleLinkedList _list = new DoubleLinkedList();
 
@@ -47,6 +48,5 @@ namespace MyClassLibrary
         {
             return _list.ToArray();
         }
-
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyClassLibrary.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyClassLibrary
 {
-    public class SingleLinkedList
+    public class SingleLinkedList : ISingleLinkedList
     {
         private SingleNode _head;
 

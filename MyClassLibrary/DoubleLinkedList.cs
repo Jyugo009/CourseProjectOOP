@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyClassLibrary.Interfaces;
 
 namespace MyClassLibrary
 {
-    public class DoubleLinkedList
+    public class DoubleLinkedList : IDoubleLinkedList
     {
         private DoubleNode? _head;
         private DoubleNode? _tail;

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyClassLibrary.Interfaces;
 
 namespace MyClassLibrary
 {
-    public class MyStack
+    public class MyStack : IStack
     {
         private DoubleLinkedList _list = new DoubleLinkedList();
         public int Count => _list.Count;
@@ -16,7 +17,7 @@ namespace MyClassLibrary
             _list.AddFirst(item);
         }
 
-        public object Pop()
+        public object? Pop()
         {
             if (Count == 0) throw new InvalidOperationException("Cannot pop from an empty stack.");
 
@@ -27,7 +28,7 @@ namespace MyClassLibrary
             return value;
         }
 
-        public object Peek()
+        public object? Peek()
         {
             if (Count == 0) throw new InvalidOperationException("Cannot peek on an empty stack.");
 
