@@ -7,33 +7,35 @@ using MyClassLibrary.Interfaces;
 
 namespace MyClassLibrary
 {
-    public class BinarySearchTree : IBinarySearchTree
+    public class BinarySearchTree<T> : IBinarySearchTree<T> where T : IComparable<T>
     {
-        private TreeNode _root;
-        public TreeNode Root => _root;
+        private TreeNode<T>? _root;
+        public TreeNode<T>? Root => _root;
 
         public int Count { get; private set; }
 
-        public void Add(object? value)
+        public void Add(T? value)
         {
-            if (value is int intValue)
+            if (value is T intValue)
             {
                 _root = Insert(_root, intValue);
             }
 
-            TreeNode Insert(TreeNode node, int newValue)
+            TreeNode<T> Insert(TreeNode<T>? node, T? newValue)
             {
                 if (node == null)
                 {
-                    return new TreeNode(newValue);
+                    return new TreeNode<T>(newValue);
                 }
 
-                if (newValue < node.Value)
+                int compareResult = node.Value.CompareTo(newValue);
+
+                if (compareResult > 0)
                 {
                     node.Left = Insert(node.Left, newValue);
                 }
 
-                else if (newValue > node.Value)
+                else if (compareResult < 0)
                 {
                     node.Right = Insert(node.Right, newValue);
                 }
@@ -44,28 +46,30 @@ namespace MyClassLibrary
             Count++;
         }
 
-        public bool Contains(object? value)
+        public bool Contains(T? value)
         {
-            if (value is int intValue)
+            if (value is T intValue)
             {
                 return Find(_root, intValue) != null;
             }
 
             return false;
 
-            TreeNode Find(TreeNode? node, int targetValue)
+            TreeNode<T> Find(TreeNode<T>? node, T? targetValue)
             {
                 if (node == null)
                 {
                     return null;
                 }
 
-                if (node.Value == targetValue)
+                int compareResult = node.Value.CompareTo(targetValue);
+
+                if (compareResult == 0)
                 {
                     return node;
                 }
 
-                if (targetValue < node.Value)
+                if (compareResult > 0)
                 {
                     return Find(node.Left, targetValue);
                 }
@@ -81,12 +85,12 @@ namespace MyClassLibrary
             Count = 0;
         }
 
-        public object[] ToArray()
+        public T?[] ToArray()
         {
             if (_root == null)
-                return Array.Empty<object>();
+                return Array.Empty<T>();
 
-            object[] resultArray = new object[Count];
+            T?[] resultArray = new T?[Count];
 
             int index = 0;
 
@@ -95,7 +99,7 @@ namespace MyClassLibrary
             return resultArray;
         }
 
-        private void InOrderTraverseAndFillArray(TreeNode node, ref int currentIndex, object[] arr)
+        private void InOrderTraverseAndFillArray(TreeNode<T>? node, ref int currentIndex, T?[] arr)
         {
             if (node == null)
             {

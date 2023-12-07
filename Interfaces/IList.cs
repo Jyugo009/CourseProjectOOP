@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace MyClassLibrary.Interfaces
 {
-    public interface IList : ICollection
+    public interface IList<T> : ICollection<T>
     {
-        object? this[int index] { get; }
+        T? this[int index] { get; }
 
-        public int Capacity { get; }
+        int Capacity { get; }
 
-        void Add(object? item);
+        void Add(T? item);
 
-        void Insert(int index, object? item);
+        void Insert(int index, T? item);
 
-        void Remove(object? item);
+        void Remove(T? item);
 
         void RemoveAt(int index);   
         
-        int IndexOf(object? item);  
+        int IndexOf(T? item);  
         
         void Reverse();
            
-        }
+    }
 }

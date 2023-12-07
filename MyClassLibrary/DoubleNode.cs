@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace MyClassLibrary
 {
-    public class DoubleNode
+    #nullable enable
+    public class DoubleNode<T>
     {
-        public object Value { get; }
-        public DoubleNode? Next { get; set; }
-        public DoubleNode? Previous { get; set; }
+        public T? Value { get; }
+        public DoubleNode<T>? Next { get; set; }
+        public DoubleNode<T>? Previous { get; set; }
 
-        public DoubleNode(object value)
+        public DoubleNode(T? value)
         {
             Value = value;
 

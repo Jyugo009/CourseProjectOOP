@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace MyClassLibrary.Interfaces
 {
-    public interface IBinarySearchTree : ICollection
+    public interface IBinarySearchTree<T> : ICollection<T>
     {
-        void Add(object? item);
+        void Add(T? item);
     }
 }

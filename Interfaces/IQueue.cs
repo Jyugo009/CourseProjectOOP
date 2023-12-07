@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace MyClassLibrary.Interfaces
 {
-    public interface IQueue : ICollection
+    public interface IQueue<T> : ICollection<T>
     {
-        public void Enqueue(object? item);
+        void Enqueue(T? item);
 
-        public object? Dequeue();
+        T? Dequeue();
         
-        public object? Peek();
+        T? Peek();
 
 
     }

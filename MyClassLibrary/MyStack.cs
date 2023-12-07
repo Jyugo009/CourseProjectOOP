@@ -7,17 +7,17 @@ using MyClassLibrary.Interfaces;
 
 namespace MyClassLibrary
 {
-    public class MyStack : IStack
+    public class MyStack<T> : IStack<T>
     {
-        private DoubleLinkedList _list = new DoubleLinkedList();
+        private readonly DoubleLinkedList<T>? _list = new DoubleLinkedList<T>();
         public int Count => _list.Count;
 
-        public void Push(object item)
+        public void Push(T? item)
         {
             _list.AddFirst(item);
         }
 
-        public object? Pop()
+        public T? Pop()
         {
             if (Count == 0) throw new InvalidOperationException("Cannot pop from an empty stack.");
 
@@ -28,7 +28,7 @@ namespace MyClassLibrary
             return value;
         }
 
-        public object? Peek()
+        public T? Peek()
         {
             if (Count == 0) throw new InvalidOperationException("Cannot peek on an empty stack.");
 
@@ -39,12 +39,12 @@ namespace MyClassLibrary
         {
             _list.Clear();
         }
-        public bool Contains(object item)
+        public bool Contains(T? item)
         {
             return _list.Contains(item);
         }
 
-        public object[] ToArray()
+        public T?[] ToArray()
         {
             return _list.ToArray();
         }

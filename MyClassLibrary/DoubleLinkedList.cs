@@ -7,20 +7,20 @@ using MyClassLibrary.Interfaces;
 
 namespace MyClassLibrary
 {
-    public class DoubleLinkedList : IDoubleLinkedList
+    public class DoubleLinkedList<T> : IDoubleLinkedList<T>
     {
-        private DoubleNode? _head;
-        private DoubleNode? _tail;
+        private DoubleNode<T>? _head;
+        private DoubleNode<T>? _tail;
 
         public int Count { get; private set; }
 
-        public object? First => _head?.Value;
+        public T? First => _head.Value;
 
-        public object? Last => _tail?.Value;
+        public T? Last => _tail.Value;
 
-        public void Add(object? item)
+        public void Add(T? item)
         {
-            var newNode = new DoubleNode(item);
+            var newNode = new DoubleNode<T>(item);
 
             if (_head == null)
             {
@@ -39,9 +39,9 @@ namespace MyClassLibrary
             Count++;
         }
 
-        public void AddFirst(object item)
+        public void AddFirst(T? item)
         {
-            var newNode = new DoubleNode(item);
+            var newNode = new DoubleNode<T>(item);
 
             if (_head == null)
             {
@@ -60,7 +60,7 @@ namespace MyClassLibrary
             Count++;
         }
 
-        public void Remove(object item)
+        public void Remove(T? item)
         {
             var current = _head;
 
@@ -136,7 +136,7 @@ namespace MyClassLibrary
             }
         }
 
-        public bool Contains(object item)
+        public bool Contains(T? item)
         {
             var current = _head;
 
@@ -153,9 +153,9 @@ namespace MyClassLibrary
             return false;
         }
 
-        public object[] ToArray()
+        public T?[] ToArray()
         {
-            var resultArray = new object[Count];
+            var resultArray = new T?[Count];
             int index = 0;
 
             var currentNode = _head;
@@ -190,7 +190,5 @@ namespace MyClassLibrary
             Count = 0;
 
         }
-
-
     }
 }
