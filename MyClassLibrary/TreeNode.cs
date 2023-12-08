@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace MyClassLibrary
 {
-    public class TreeNode
+    public class TreeNode<T> where T : IComparable<T>
     {
-        public int Value { get; }
-        public TreeNode? Left { get; set;}
-        public TreeNode? Right { get; set; }
+        public T Value { get; }
+        public TreeNode<T>? Left { get; set;}
+        public TreeNode<T>? Right { get; set; }
 
-        public TreeNode(int value)
+        public TreeNode(T value)
         {
             Value = value;
 

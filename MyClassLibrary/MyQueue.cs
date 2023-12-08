@@ -7,18 +7,18 @@ using MyClassLibrary.Interfaces;
 
 namespace MyClassLibrary
 {
-    public class MyQueue : IQueue
+    public class MyQueue<T> : IQueue<T>
     {
-        private DoubleLinkedList _list = new DoubleLinkedList();
+        private DoubleLinkedList<T>? _list = new DoubleLinkedList<T>();
 
         public int Count => _list.Count;
 
-        public void Enqueue(object item)
+        public void Enqueue(T? item)
         {
             _list.Add(item);
         }
 
-        public object Dequeue()
+        public T? Dequeue()
         {
             if (Count == 0) throw new InvalidOperationException("Cannot dequeue from an empty queue.");
 
@@ -27,7 +27,7 @@ namespace MyClassLibrary
             return value;
         }
 
-        public object Peek()
+        public T? Peek()
         {
             if (Count == 0) throw new InvalidOperationException("Cannot peek from an empty queue.");
 
@@ -39,12 +39,12 @@ namespace MyClassLibrary
             _list.Clear();
         }
 
-        public bool Contains(object item)
+        public bool Contains(T? item)
         {
             return _list.Contains(item);
         }
 
-        public object[] ToArray()
+        public T?[] ToArray()
         {
             return _list.ToArray();
         }

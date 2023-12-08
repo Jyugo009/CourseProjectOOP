@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace MyClassLibrary
 {
-    public class SingleLinkedList : ISingleLinkedList
+    public class SingleLinkedList<T> : ISingleLinkedList<T>
     {
-        private SingleNode _head;
+        private SingleNode<T>? _head;
 
-        private SingleNode _tail;
+        private SingleNode<T>? _tail;
 
         public int Count { get; private set; }
 
-        public object First => _head?.Value;
+        public T? First => _head.Value;
 
-        public object Last => _tail?.Value;
+        public T? Last => _tail.Value;
 
-        public void Add(object item)
+        public void Add(T? item)
         {
-            var newNode = new SingleNode(item);
+            var newNode = new SingleNode<T>(item);
 
             if (_head == null)
             {
@@ -38,9 +38,9 @@ namespace MyClassLibrary
             Count++;
         }
 
-        public void AddFirst(object item)
+        public void AddFirst(T? item)
         {
-            var newNode = new SingleNode(item)
+            var newNode = new SingleNode<T>(item)
             {
                 Next = _head
             };
@@ -55,12 +55,12 @@ namespace MyClassLibrary
             Count++;
         }
 
-        public void Insert(int index, object item)
+        public void Insert(int index, T? item)
         {
             if (index < 0 || index > Count)
                 throw new ArgumentOutOfRangeException();
 
-            var newNode = new SingleNode(item);
+            var newNode = new SingleNode<T>(item);
 
             if (index == 0)
             {
@@ -97,7 +97,7 @@ namespace MyClassLibrary
             Count = 0;
         }
 
-        public bool Contains(object item)
+        public bool Contains(T? item)
         {
             var current = _head;
 
@@ -114,9 +114,9 @@ namespace MyClassLibrary
             return false;
         }
 
-        public object[] ToArray()
+        public T?[] ToArray()
         {
-            var resultArray = new object[Count];
+            var resultArray = new T?[Count];
 
             int index = 0;
 
@@ -124,7 +124,7 @@ namespace MyClassLibrary
 
             while (currentNode != null)
             {
-                resultArray[index++] = (int)currentNode.Value;
+                resultArray[index++] = (T?)currentNode.Value;
 
                 currentNode = currentNode.Next;
 

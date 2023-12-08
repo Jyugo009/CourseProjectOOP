@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace MyClassLibrary.Interfaces
 {
-    public interface IDoubleLinkedList : ICollection
+    public interface IDoubleLinkedList<T> : ICollection<T>
     {
-        public object? First { get; }
+        T? First { get; }
 
-        public object? Last { get; }
+        T? Last { get; }
 
-        void Add(object? item);
+        void Add(T? item);
 
         void RemoveLast();
 
         void RemoveFirst();
 
-        void AddFirst(object? item);
+        void AddFirst(T? item);
 
-        void Remove(object? item);
+        void Remove(T? item);
 
 
     }

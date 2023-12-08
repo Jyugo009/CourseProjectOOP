@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace MyClassLibrary.Interfaces
 {
-    public interface ISingleLinkedList : ICollection
+    public interface ISingleLinkedList<T> : ICollection<T>
     {
-        public object? First { get; }
+        T? First { get; }
 
-        public object? Last { get; }
+        T? Last { get; }
 
-        void Add(object? item);
+        void Add(T? item);
 
-        void AddFirst(object? item);
+        void AddFirst(T? item);
 
-        void Insert(int index, object? item);
+        void Insert(int index, T? item);
     }
 }

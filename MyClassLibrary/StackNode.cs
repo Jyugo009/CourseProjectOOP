@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace MyClassLibrary
 {
-    public class StackNode
+    public class StackNode<T>
     {
-        public object Value { get; set; }
-        public StackNode Next { get; set; }
+        public T? Value { get; set; }
+        public StackNode<T>? Next { get; set; }
 
-        public StackNode(object value)
+        public StackNode(T? value)
         {
             Value = value;
 

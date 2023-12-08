@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace MyClassLibrary
 {
-    public class QueueNode
+    public class QueueNode<T>
     {
-        public object Value { get; set; }
-        public QueueNode Next { get; set; }
+        public T? Value { get; set; }
+        public QueueNode<T>? Next { get; set; }
 
-        public QueueNode(object value)
+        public QueueNode(T? value)
         {
             Value = value;
 

@@ -7,15 +7,15 @@ using MyClassLibrary.Interfaces;
 
 namespace MyClassLibrary
 {
-    public class MyList : IList
+    public class MyList<T> : Interfaces.IList<T>
     {
-        private object[] _items;
+        private T?[] _items;
 
         private int _size;
         public int Count => _size;
         public int Capacity => _items.Length;
 
-        public object this[int index]
+        public T? this[int index]
         {
             get
             {
@@ -34,13 +34,13 @@ namespace MyClassLibrary
 
         public MyList()
         {
-            _items = new object[4];
+            _items = new T?[4];
             _size = 0;
         }
 
         public MyList(int capacity)
         {
-            _items = new object[capacity];
+            _items = new T?[capacity];
             _size = 0;
         }
 
@@ -50,7 +50,7 @@ namespace MyClassLibrary
             {
                 int newCap = Math.Max(_items.Length * 2, min);
 
-                var newArr = new object[newCap];
+                var newArr = new T?[newCap];
 
                 Array.Copy(_items, newArr, _size);
 
@@ -58,13 +58,13 @@ namespace MyClassLibrary
             }
         }
 
-        public void Add(object item)
+        public void Add(T? item)
         {
             EnsureCapacity(_size + 1);
             _items[_size++] = item;
         }
 
-        public void Insert(int index, object item)
+        public void Insert(int index, T? item)
         {
             if (index < 0 || index > _size)
                 throw new ArgumentOutOfRangeException();
@@ -80,7 +80,7 @@ namespace MyClassLibrary
             ++_size;
         }
 
-        public void Remove(object item)
+        public void Remove(T? item)
         {
             int indexToRemove = IndexOf(item);
 
@@ -110,12 +110,12 @@ namespace MyClassLibrary
             --_size;
         }
 
-        public bool Contains(object item)
+        public bool Contains(T? item)
         {
             return IndexOf(item) != -1;
         }
 
-        public int IndexOf(object item)
+        public int IndexOf(T? item)
         {
             for (int i = 0; i < _size; i++)
             {
@@ -142,15 +142,15 @@ namespace MyClassLibrary
         {
             for (int i = 0; i < _size; i++)
             {
-                _items[i] = null;
+                _items[i] = default;
             }
 
             _size = 0;
         }
 
-        public object[] ToArray()
+        public T?[] ToArray()
         {
-            var array = new object[_size];
+            var array = new T?[_size];
 
             for (int i = 0; i < _size; i++)
             {
@@ -164,7 +164,7 @@ namespace MyClassLibrary
         {
             for (int i = 0, j = _size - 1; i < j; i++, j--)
             {
-                object temp = _items[i];
+                T? temp = _items[i];
 
                 _items[i] = _items[j];
 

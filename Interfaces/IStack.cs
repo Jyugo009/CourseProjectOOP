@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace MyClassLibrary.Interfaces
 {
-    public interface IStack : ICollection
+    public interface IStack<T> : ICollection<T>
     {
-        public void Push(object? item);
+        void Push(T? item);
 
-        public object? Pop();
+        T? Pop();
 
-        public object? Peek();
+        T? Peek();
     }
 }

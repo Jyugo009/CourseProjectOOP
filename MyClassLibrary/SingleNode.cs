@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace MyClassLibrary
 {
-    public class SingleNode
+    public class SingleNode<T>
     {
-        public object Value { get; set; }
-        public SingleNode Next { get; set; }
+        public T? Value { get; set; }
+        public SingleNode<T>? Next { get; set; }
 
-        public SingleNode(object value)
+        public SingleNode(T? value)
         {
             Value = value;
 
