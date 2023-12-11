@@ -9,9 +9,9 @@ namespace MyClassLibrary
 {
     public class MyList<T> : Interfaces.IList<T>
     {
-        private T?[] _items;
+        protected T?[] _items;
 
-        private int _size;
+        protected int _size;
         public int Count => _size;
         public int Capacity => _items.Length;
 
