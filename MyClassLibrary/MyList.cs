@@ -58,13 +58,13 @@ namespace MyClassLibrary
             }
         }
 
-        public void Add(T? item)
+        public virtual void Add(T? item)
         {
             EnsureCapacity(_size + 1);
             _items[_size++] = item;
         }
 
-        public void Insert(int index, T? item)
+        public virtual void Insert(int index, T? item)
         {
             if (index < 0 || index > _size)
                 throw new ArgumentOutOfRangeException();
@@ -80,7 +80,7 @@ namespace MyClassLibrary
             ++_size;
         }
 
-        public void Remove(T? item)
+        public virtual void Remove(T? item)
         {
             int indexToRemove = IndexOf(item);
 
@@ -97,7 +97,7 @@ namespace MyClassLibrary
                 RemoveAt(indexToRemove);
         }
 
-        public void RemoveAt(int index)
+        public virtual void RemoveAt(int index)
         {
             if (index < 0 || index >= _size)
                 throw new ArgumentOutOfRangeException();
@@ -138,7 +138,7 @@ namespace MyClassLibrary
             return -1;
         }
 
-        public void Clear()
+        public virtual void Clear()
         {
             for (int i = 0; i < _size; i++)
             {
