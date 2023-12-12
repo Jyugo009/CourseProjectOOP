@@ -25,14 +25,10 @@ namespace CourseProjectOOP
 
             observedList.Insert(0, 2);
 
-            if (observedList.Contains(1))
-            {
-                observedList.Remove(1);
-            }
+            observedList.Remove(1);
 
             observedList.RemoveAt(0);
 
-          
             observedList.Clear();
         }
     }

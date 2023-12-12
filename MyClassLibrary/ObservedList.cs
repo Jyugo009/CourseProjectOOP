@@ -32,19 +32,11 @@ namespace MyClassLibrary
 
     public class ObservedList<T> : MyList<T>
     {
-        public event EventHandler<ListChangedEventArgs<T>> ItemAdded;
 
-        public event EventHandler<ListChangedEventArgs<T>> ItemInserted;
-
-        public event EventHandler<ListChangedEventArgs<T>> ItemRemoved;
-
-        public event EventHandler<ListChangedEventArgs<T>> ItemRemovedAt;
-
-        public event EventHandler<EventArgs> ListCleared;
-
-        public new void Add(T? item)
+        public override void Add(T? item)
         {
             base.Add(item);
+
             OnItemAdded(new ListChangedEventArgs<T>(ListChangedEventArgs<T>.ChangeType.Added, item));
         }
 
@@ -53,9 +45,10 @@ namespace MyClassLibrary
             ItemAdded?.Invoke(this, e);
         }
 
-        public new void Insert(int index, T? item)
+        public override void Insert(int index, T? item)
         {
             base.Insert(index, item);
+
             OnItemInserted(new ListChangedEventArgs<T>(ListChangedEventArgs<T>.ChangeType.Inserted, item, index));
         }
 
@@ -64,15 +57,13 @@ namespace MyClassLibrary
             ItemInserted?.Invoke(this, e);
         }
 
-        public new void Remove(T? item)
+        public override void Remove(T? item)
         {
             int index = IndexOf(item);
 
             if (index != -1)
             {
                 base.Remove(item);
-
-                OnItemRemoved(new ListChangedEventArgs<T>(ListChangedEventArgs<T>.ChangeType.Removed, item, index));
             }
         }
 
@@ -81,12 +72,9 @@ namespace MyClassLibrary
             ItemRemoved?.Invoke(this, e);
         }
 
-        public new void RemoveAt(int index)
+        public override void RemoveAt(int index)
         {
-            if (index < 0 || index >= _size)
-                throw new ArgumentOutOfRangeException();
-
-            T? removedItem = _items[index];
+           T? removedItem = this[index];
 
             base.RemoveAt(index);
 
@@ -98,9 +86,10 @@ namespace MyClassLibrary
             ItemRemoved?.Invoke(this, e);
         }
 
-        public new void Clear()
+        public override void Clear()
         {
             base.Clear();
+
             OnListCleared(EventArgs.Empty);
         }
 
@@ -109,17 +98,13 @@ namespace MyClassLibrary
             ListCleared?.Invoke(this, e);
         }
 
-        public new T?[] ToArray()
-        {
-            var array = base.ToArray();
+        public event EventHandler<ListChangedEventArgs<T>> ItemAdded;
 
-            return array;
-        }
+        public event EventHandler<ListChangedEventArgs<T>> ItemInserted;
 
-        public new void Reverse()
-        {
-            base.Reverse();
-        }
+        public event EventHandler<ListChangedEventArgs<T>> ItemRemoved;
+
+        public event EventHandler<EventArgs> ListCleared;
     }
 
 
