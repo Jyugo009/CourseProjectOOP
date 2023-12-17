@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,6 +48,19 @@ namespace MyClassLibrary
         public T?[] ToArray()
         {
             return _list.ToArray();
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            foreach (var item in _list)
+            {
+                yield return item;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 
