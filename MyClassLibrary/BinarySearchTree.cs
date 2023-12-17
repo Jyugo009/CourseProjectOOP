@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using MyClassLibrary.Interfaces;
+using MyLinqExtentions;
 
 namespace MyClassLibrary
 {
@@ -113,5 +116,32 @@ namespace MyClassLibrary
             InOrderTraverseAndFillArray(node.Right, ref currentIndex, arr);
         }
 
+        public IEnumerator<T> GetEnumerator()
+        {
+            return InOrderTraversal(_root).GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        private IEnumerable<T> InOrderTraversal(TreeNode<T>? node)
+        {
+            if (node != null)
+            {
+                foreach (var v in InOrderTraversal(node.Left))
+                {
+                    yield return v;
+                }
+
+                yield return node.Value;
+
+                foreach (var v in InOrderTraversal(node.Right))
+                {
+                    yield return v;
+                }
+            }
+        }
     }
 }

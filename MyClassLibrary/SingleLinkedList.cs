@@ -1,9 +1,11 @@
 ﻿using MyClassLibrary.Interfaces;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace MyClassLibrary
 {
@@ -133,6 +135,22 @@ namespace MyClassLibrary
             return resultArray;
 
         }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            SingleNode<T>? current = _head;
+            while (current != null)
+            {
+                yield return current.Value;
+                current = current.Next;
+            }
+        }
+        
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
 
     }
 }

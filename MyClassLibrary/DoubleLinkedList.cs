@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using MyClassLibrary.Interfaces;
 
 namespace MyClassLibrary
@@ -189,6 +191,21 @@ namespace MyClassLibrary
 
             Count = 0;
 
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            DoubleNode<T>? current = _head;
+            while (current != null)
+            {
+                yield return current.Value;
+                current = current.Next;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }
